@@ -1,8 +1,14 @@
 import { BaseSchema } from '@adonisjs/lucid/schema'
 
+/**
+ * Represents a migration to create the 'auth_access_tokens' table.
+ */
 export default class extends BaseSchema {
   protected tableName = 'auth_access_tokens'
 
+  /**
+   * Creates the 'auth_access_tokens' table.
+   */
   async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
@@ -25,6 +31,9 @@ export default class extends BaseSchema {
     })
   }
 
+  /**
+   * Drops the 'auth_access_tokens' table.
+   */
   async down() {
     this.schema.dropTable(this.tableName)
   }
