@@ -53,7 +53,13 @@ export default class User extends compose(BaseModel, AuthFinder) {
   /**
    * The access tokens associated with the user.
    */
-  static accessTokens = DbAccessTokensProvider.forModel(User)
+  static accessTokens = DbAccessTokensProvider.forModel(User, {
+    expiresIn: '30 days',
+    prefix: 'z2c_',
+    table: 'auth_access_tokens',
+    type: 'auth_token',
+    tokenSecretLength: 40,
+  })
 
   /**
    * Hashes the user's password before saving.
